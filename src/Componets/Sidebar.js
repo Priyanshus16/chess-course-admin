@@ -86,6 +86,24 @@ export default function Sidebar() {
             </ListItem>
 
             <ListItem disablePadding>
+              <ListItemButton onClick={() => navigate('/MilkOutward')}>
+                <ListItemIcon>
+                  <FaceIcon sx={{ color: "#6945FF" }} />
+                </ListItemIcon>
+                <ListItemText sx={{ fontSize: "14px" }} primary="Milk Outward" />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => navigate('/MilkInward')}>
+                <ListItemIcon>
+                  <FaceIcon sx={{ color: "#6945FF" }} />
+                </ListItemIcon>
+                <ListItemText sx={{ fontSize: "14px" }} primary="Milk Inward" />
+              </ListItemButton>
+            </ListItem>
+
+            {/* <ListItem disablePadding>
               <ListItemButton onClick={() => navigate('/Orders')}>
                 <ListItemIcon>
                   <AttachMoneyIcon sx={{ color: "#6945FF" }} />
@@ -95,7 +113,7 @@ export default function Sidebar() {
                   primary="Milk Dispatch"
                 />
               </ListItemButton>
-            </ListItem>
+            </ListItem> */}
 
             {/* <ListItem disablePadding>
               <ListItemButton onClick={() => navigate('/OrderCancle')}>
@@ -110,7 +128,7 @@ export default function Sidebar() {
             </ListItem> */}
 
 
-            <ListItem disablePadding>
+            {/* <ListItem disablePadding>
               <ListItemButton onClick={() => navigate('/RateList')}>
                 <ListItemIcon>
                   <ApartmentIcon sx={{ color: "#6945FF" }} />
@@ -120,7 +138,7 @@ export default function Sidebar() {
                   primary="Rate List"
                 />
               </ListItemButton>
-            </ListItem>
+            </ListItem> */}
 
             {/* <ListItem disablePadding>
               <ListItemButton onClick={() => navigate('/AddressList')}>

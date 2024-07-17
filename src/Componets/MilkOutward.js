@@ -24,59 +24,62 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
-export default function Dashboad() {
+export default function MilkOutward() {
   const navigate = useNavigate();
   // const checklogin = localStorage.getItem('login');
   // if(!checklogin){
   //   navigate('/');
   // }
   const [Data, setData] = useState([
-    { id: 1, username: "Priyanshu", Number: 799730281, Email: 'abc@gmail.com', address: "palasia", aadhar: 228102730011, quantity: 10 },
-    { id: 2, username: "Priyansh", Number: 79973021, Email: 'abcd@gmail.com', address: "paalasia", aadhar: 2281027300, quantity: 20 },
-    { id: 3, username: "Priyanshu", Number: 799730282, Email: 'abcde@gmail.com', address: "palasiaaa", aadhar: 2281027301, quantity: 30 }
-
+    {dates:"16-07-2024",fullName:"Rajesh",morning:"2",evening:"3"},
+    {dates:"14-07-2024",fullName:"Pratesh",morning:"1",evening:"2"},
+    {dates:"11-07-2024",fullName:"Ram",morning:"2 ",evening:"4"},
+    {dates:"10-07-2024",fullName:"Shubh",morning:"3",evening:"1"}
   ]);
 
-  const [open, setOpen] = React.useState(false);
+  console.log(Data)
+
+  // const [open, setOpen] = React.useState(false);
   const [deleteitem, setdeleteitem] = React.useState("");
   let i = 0;
+
+  const handleClick=()=>{
+    navigate('/MilkOutward')
+  }
+
   // // ---delete Code----
   // const handleclose = () => {
   //   setOpen(false);
   // };
 
-  const handleDelete = (id) => {
-    const confirmed = window.confirm("Are you sure you want to delete this user?");
-    setOpen(true);
-    if(confirmed)
-    setData(Data.filter((Data) => Data.id !== id));
-  };
+//   const handleDelete = async (id) => {
+//     const confirmed = window.confirm("Are you sure you want to delete this user?");
+//     if (confirmed) {
+//       try {
+//         await axios.delete(`http://localhost:4000/users/${id}`);
+//         setData(Data.filter((user) => user._id !== id));
+//         alert("User deleted successfully");
+//       } catch (error) {
+//         console.error("Error deleting user:", error);
+//         alert("Error deleting user");
+//       }
+//     }
+//   };
 
-  const confirmDelete = async (id) => {
-    // await axios
-    //   .delete(
-    //     `https://kabadiwala.cyclic.app/deleteUser/${id}`
-    //   )
-    //   .then((res) => {
-    //     setOpen(false);
-    //    getData();
-    //    alert(res.data.message);
-    //   });
-  };
+//   const getData = async () => {
+//     await axios
+//       .get(
+//         "http://localhost:4000/users"
+//       )
+//       .then((res) => {
+//         setData(res.data);
+//       });
+//   };
+  
 
-  // const getData = async () => {
-  //   await axios
-  //     .get(
-  //       "https://kabadiwala.cyclic.app/getAllUser"
-  //     )
-  //     .then((res) => {
-  //       setData(res.data);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+//   useEffect(() => {
+//     getData();
+//   }, []);
   return (
     <>
       <Header />
@@ -85,12 +88,7 @@ export default function Dashboad() {
         sx={{ flexGrow: 1, p: 3, bgcolor: "#F5F5F5", height: "97vh" }}
       >
         <Toolbar />
-        <Typography
-          variant="h4"
-          sx={{ fontSize: "20px", color: "#6945FF", textAlign: "center" }}
-        >
-          User Program
-        </Typography>
+        
         <TableContainer component={Paper} sx={{ marginTop: "20px" }}>
           <Table sx={{ minWidth: 650 }} aria-label="caption table">
             {/* // first Row */}
@@ -107,7 +105,28 @@ export default function Dashboad() {
                     textAlign: "center",
                   }}
                 >
-                  User Management
+                  Milk Outward
+                </TableCell>
+              </TableRow>
+            </TableHead>
+
+            {/* second row */}
+
+            <TableHead>
+              <TableRow>
+                <TableCell
+                  colSpan={5}
+                  sx={{
+                    fontFamily: "Roboto",
+                    fontSize: "20px",
+                    fontWeight: 600,
+                    lineHeight: "0px",
+                    letterSpacing: "0em",
+                  }}
+                >
+                  <Button variant="outlined" 
+                  onClick={handleClick}
+                  > Add </Button>
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -125,7 +144,20 @@ export default function Dashboad() {
                     letterSpacing: "0em",
                   }}
                 >
-                  Id
+                  Dates
+                </TableCell>
+                
+                <TableCell
+                  align="center"
+                  sx={{
+                    fontFamily: "Roboto",
+                    fontSize: "14px",
+                    fontWeight: 700,
+                    lineHeight: "16px",
+                    letterSpacing: "0em",
+                  }}
+                >
+                  Full Name
                 </TableCell>
                 <TableCell
                   align="center"
@@ -137,8 +169,9 @@ export default function Dashboad() {
                     letterSpacing: "0em",
                   }}
                 >
-                  User Name
+                  Morning (in Litre)
                 </TableCell>
+                
                 <TableCell
                   align="center"
                   sx={{
@@ -149,68 +182,9 @@ export default function Dashboad() {
                     letterSpacing: "0em",
                   }}
                 >
-                  Number
+                  Evening (in Litre)
                 </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{
-                    fontFamily: "Roboto",
-                    fontSize: "14px",
-                    fontWeight: 700,
-                    lineHeight: "16px",
-                    letterSpacing: "0em",
-                  }}
-                >
-                  Email
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{
-                    fontFamily: "Roboto",
-                    fontSize: "14px",
-                    fontWeight: 700,
-                    lineHeight: "16px",
-                    letterSpacing: "0em",
-                  }}
-                >
-                  Address
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{
-                    fontFamily: "Roboto",
-                    fontSize: "14px",
-                    fontWeight: 700,
-                    lineHeight: "16px",
-                    letterSpacing: "0em",
-                  }}
-                >
-                  Aadhar Number
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{
-                    fontFamily: "Roboto",
-                    fontSize: "14px",
-                    fontWeight: 700,
-                    lineHeight: "16px",
-                    letterSpacing: "0em",
-                  }}
-                >
-                  Quantity
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{
-                    fontFamily: "Roboto",
-                    fontSize: "14px",
-                    fontWeight: 700,
-                    lineHeight: "16px",
-                    letterSpacing: "0em",
-                  }}
-                >
-                  Delete
-                </TableCell>
+
               </TableRow>
             </TableHead>
 
@@ -221,38 +195,30 @@ export default function Dashboad() {
              key={user.id}
             >
               <TableRow>
-                <TableCell align="center" sx={{ width: "150px" }}>
-                  {user.id}
+                {/* <TableCell align="center" sx={{ width: "150px" }}>
+                  {i}
+                </TableCell> */}
+                <TableCell align="center">
+                  {/* {user.username} */}
+                  {user.dates}
+                </TableCell>
+                
+                <TableCell align="center">
+                  {/* {user.email} */}
+                  {user.fullName}
                 </TableCell>
                 <TableCell align="center">
-                  {user.username}
-                </TableCell>
-                <TableCell align="center">
-                  {user.Number}
-                </TableCell>
-                <TableCell align="center">
-                  {user.Email}
-                </TableCell>
-                <TableCell align="center">
-                  {user.address}
+                  {/* {user.password} */}
+                  {user.morning}
 
                 </TableCell>
                 <TableCell align="center">
-                  {user.aadhar}
+                  {/* {user.password} */}
+                  {user.evening}
 
                 </TableCell>
-                <TableCell align="center">
-                  {user.quantity}
-
-                </TableCell>
-                <TableCell align="center">
-                  <DeleteIcon
-                    className="DeleteIcon"
-                  onClick={() =>
-                    handleDelete(user.id)
-                  }
-                  />
-                </TableCell>
+              
+                
               </TableRow>
             </TableBody>
            ); 
@@ -273,16 +239,6 @@ export default function Dashboad() {
               Your will not be able to recover this imaginary file!
             </DialogContentText>
 
-            {/* <DialogActions>
-              <Button
-              onClick={() => setOpen(false)}
-              >cancel</Button>
-              <Button
-                onClick={() => confirmDelete(deleteitem)}
-              >
-                Yes, delete it!
-              </Button>
-            </DialogActions> */}
           </DialogContent>
         </Dialog>
       </Box>
