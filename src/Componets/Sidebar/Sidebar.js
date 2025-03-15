@@ -11,6 +11,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { useNavigate } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import Testimonials from "../Testimonial/Testimonial";
 
 //icons
 import ApartmentIcon from "@mui/icons-material/Apartment";
@@ -86,71 +87,72 @@ export default function Sidebar() {
             </ListItem>
 
             <ListItem disablePadding>
-              <ListItemButton onClick={() => navigate('/MilkOutward')}>
+              <ListItemButton onClick={() => navigate('/addTestimonials')}>
                 <ListItemIcon>
                   <FaceIcon sx={{ color: "#6945FF" }} />
                 </ListItemIcon>
-                <ListItemText sx={{ fontSize: "14px" }} primary="Milk Outward" />
+                <ListItemText sx={{ fontSize: "14px" }} primary="Add Testimonials" />
               </ListItemButton>
             </ListItem>
 
             <ListItem disablePadding>
-              <ListItemButton onClick={() => navigate('/MilkInward')}>
+              <ListItemButton onClick={() => navigate('/testimonials')}>
                 <ListItemIcon>
                   <FaceIcon sx={{ color: "#6945FF" }} />
                 </ListItemIcon>
-                <ListItemText sx={{ fontSize: "14px" }} primary="Milk Inward" />
+                <ListItemText sx={{ fontSize: "14px" }} primary="Testimonials" />
               </ListItemButton>
             </ListItem>
 
-            {/* <ListItem disablePadding>
-              <ListItemButton onClick={() => navigate('/Orders')}>
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => navigate('/addCurriculum')}>
                 <ListItemIcon>
                   <AttachMoneyIcon sx={{ color: "#6945FF" }} />
                 </ListItemIcon>
                 <ListItemText
                   sx={{ fontSize: "14px" }}
-                  primary="Milk Dispatch"
+                  primary="Add Curriculum"
                 />
               </ListItemButton>
-            </ListItem> */}
+            </ListItem>
 
-            {/* <ListItem disablePadding>
-              <ListItemButton onClick={() => navigate('/OrderCancle')}>
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => navigate('/curriculum')}>
                 <ListItemIcon>
                   <AttachMoneyIcon sx={{ color: "#6945FF" }} />
                 </ListItemIcon>
                 <ListItemText
                   sx={{ fontSize: "14px" }}
-                  primary="Order Cancel"
+                  primary="Curriculum"
                 />
               </ListItemButton>
-            </ListItem> */}
+            </ListItem>
 
 
-            {/* <ListItem disablePadding>
-              <ListItemButton onClick={() => navigate('/RateList')}>
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => navigate('/addBlog')}>
                 <ListItemIcon>
                   <ApartmentIcon sx={{ color: "#6945FF" }} />
                 </ListItemIcon>
                 <ListItemText
                   sx={{ fontSize: "14px" }}
-                  primary="Rate List"
+                  primary="Add Blog"
                 />
               </ListItemButton>
-            </ListItem> */}
+            </ListItem>
 
-            {/* <ListItem disablePadding>
-              <ListItemButton onClick={() => navigate('/AddressList')}>
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => navigate('/blogs')}>
                 <ListItemIcon>
                   <ApartmentIcon sx={{ color: "#6945FF" }} />
                 </ListItemIcon>
                 <ListItemText
                   sx={{ fontSize: "14px" }}
-                  primary="Address"
+                  primary="Blogs"
                 />
               </ListItemButton>
-            </ListItem> */}
+            </ListItem>
+
             {/* <ListItem disablePadding>
               <ListItemButton onClick={() => navigate('/QuantityList')}>
                 <ListItemIcon>

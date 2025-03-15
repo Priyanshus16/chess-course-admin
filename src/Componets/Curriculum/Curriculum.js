@@ -11,51 +11,52 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
+import { Button } from "@mui/material";
 
+//icons
+import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
-import Header from "./Header";
-import { useNavigate } from "react-router-dom";
+import { resolvePath, useNavigate } from "react-router-dom";
 
-export default function OrderCancle() {
+export default function Curriculum() {
+  const navigate = useNavigate();
+  const [apiData, setApiData] = useState([]);
 
-  // const navigate = useNavigate();
-  // const checklogin = localStorage.getItem('login');
-  // if(!checklogin){
-  //   navigate('/');
-  // }
-  // const [Data, setData] = useState([]);
-  // let i = 0;
-  
-  // const getData = async () => {
-  //   await axios
-  //     .get(
-  //       "https://kabadiwala.cyclic.app/OrderCancle"
-  //     )
-  //     .then((res) => {
-  //       setData(res.data);
-  //     });
-  // };
-  // useEffect(() => {
-  //   getData();
-  // }, []);
-  
+  const ADMIN_API_PREFIX = '/api/v1/admin'
+
+  const getData = async () => {
+    const response = await axios.get(`http://localhost:4000${ADMIN_API_PREFIX}/curriculum`); 
+    setApiData(response.data.curriculum);
+  };
+
+  const handleUserDelete = async (id) => {
+    try {
+        console.log(id)
+      const response = await axios.delete(
+        `http://localhost:4000${ADMIN_API_PREFIX}/curriculum/${id}`
+      );
+      setApiData((prevData) => prevData.filter((item) => item._id !== id));
+      console.log(response);
+    } catch (error) {
+        console.log(error,'error while api call')
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <>
-      <Header />
       <Box
         component="main"
         sx={{ flexGrow: 1, p: 3, bgcolor: "#F5F5F5", height: "97vh" }}
       >
         <Toolbar />
-        <Typography
-          variant="h4"
-          sx={{ fontSize: "20px", color: "#6945FF", textAlign: "center" }}
-        >
-          Quantity Program
-        </Typography>
         <TableContainer component={Paper} sx={{ marginTop: "20px" }}>
           <Table sx={{ minWidth: 650 }} aria-label="caption table">
             {/* // first Row */}
+
             <TableHead>
               <TableRow>
                 <TableCell
@@ -69,11 +70,10 @@ export default function OrderCancle() {
                     textAlign: "center",
                   }}
                 >
-                  Order Cancle Management
+                  Curriculum Management
                 </TableCell>
               </TableRow>
             </TableHead>
-            {/* //second row */}
 
             {/* // Thrid row */}
             <TableHead>
@@ -88,7 +88,20 @@ export default function OrderCancle() {
                     letterSpacing: "0em",
                   }}
                 >
-                    S.no
+                  Heading
+                </TableCell>
+
+                <TableCell
+                  align="center"
+                  sx={{
+                    fontFamily: "Roboto",
+                    fontSize: "14px",
+                    fontWeight: 700,
+                    lineHeight: "16px",
+                    letterSpacing: "0em",
+                  }}
+                >
+                  SubHeading
                 </TableCell>
                 <TableCell
                   align="center"
@@ -100,8 +113,9 @@ export default function OrderCancle() {
                     letterSpacing: "0em",
                   }}
                 >
-                  Title
+                  Key Points
                 </TableCell>
+
                 <TableCell
                   align="center"
                   sx={{
@@ -112,34 +126,31 @@ export default function OrderCancle() {
                     letterSpacing: "0em",
                   }}
                 >
-                  Reason
+                  Action
                 </TableCell>
               </TableRow>
             </TableHead>
 
-            {/* {Data.map((user) => {
-                 i =i +1;
-              return (
-                <TableBody 
-                  key={user._id}
-                  >
-                  <TableRow>
-                    <TableCell align="center" sx={{ width: "150px" }}>
-                      {i}
-                    </TableCell>
-                    <TableCell align="center">
-                      {user.Title}
-                      </TableCell>
-                    <TableCell align="center">
-                      {user.Reason}
-                      </TableCell>
-                  </TableRow>
-                </TableBody>
-              );
-           })} */}
+            <TableBody>
+              {apiData.map((item) => (
+                <TableRow key={item._id}>
+                  <TableCell align="center">{item.heading}</TableCell>
+                  <TableCell align="center">{item.subHeading}</TableCell>
+                  <TableCell align="center">
+                    {item.keyPoints.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
+                  </TableCell>
+                  <TableCell align="center">
+                    <Button onClick={() => handleUserDelete(item._id)}>
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
           </Table>
         </TableContainer>
-
       </Box>
     </>
   );
